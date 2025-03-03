@@ -10,7 +10,8 @@ public class UserDTO {
   @Schema(description = "Password of the user", example = "password123")
   private String password;
 //  @Schema(description = "Role of the user", example = "USER")
-  private String role;
+
+  private String email;
 
   public String getUsername() {
     return username;
@@ -28,11 +29,11 @@ public class UserDTO {
     this.password = password;
   }
 
-  public String getRole() {
-    return role;
+  public String getEmail() {
+    return email;
   }
 
-  public void setRole(String role) {
-    this.role = role;
+  public void setEmail(String role) {
+    this.email = email;
   }
 }

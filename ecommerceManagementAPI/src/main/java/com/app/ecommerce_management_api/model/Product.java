@@ -34,7 +34,6 @@ public class Product {
     private String imageUrl;
     private Instant createdAt;
 
-
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     private StockProduct stockProduct;
 

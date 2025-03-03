@@ -39,4 +39,5 @@ public class CartItem {
     private Integer amount;
     private BigDecimal price;
 
+
 }

@@ -35,5 +35,4 @@ public class Cart {
     )
     private List<Discount> discounts;
 
-
 }

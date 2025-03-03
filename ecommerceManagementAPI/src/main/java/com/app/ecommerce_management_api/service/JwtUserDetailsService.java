@@ -44,6 +44,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     newUser.setUsername(user.getUsername());
     newUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
     newUser.setRole("ROLE_USER"); // Asignar rol por defecto
+    newUser.setEmail(user.getEmail());
     try {
       return userRepository.save(newUser);
     }

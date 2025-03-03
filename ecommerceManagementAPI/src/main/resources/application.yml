@@ -29,6 +29,8 @@ springdoc:
     enabled: true
     path: /index.html
   packages-to-scan: com.app.ecommerce_management_api
+jwt:
+  secret: EmYl05H7Tz+neq2vQebD6DWpHW9D8BwG9k79SE/gGi63YwEdLttHpZtD+7xNerXl8xfL0aRdhT0OX75L/u9agA==
 ---
 #spring:
 #  config:
@@ -91,3 +93,5 @@ springdoc:
     enabled: true
     path: /index.html
   packages-to-scan: com.app.ecommerce_management_api
+jwt:
+  secret: EmYl05H7Tz+neq2vQebD6DWpHW9D8BwG9k79SE/gGi63YwEdLttHpZtD+7xNerXl8xfL0aRdhT0OX75L/u9agA==
