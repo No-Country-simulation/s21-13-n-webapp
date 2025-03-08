@@ -4,10 +4,12 @@ import com.app.ecommerce_management_api.dto.JwtRefreshRequest;
 import com.app.ecommerce_management_api.dto.JwtRequest;
 import com.app.ecommerce_management_api.dto.JwtResponse;
 import com.app.ecommerce_management_api.dto.UserDTO;
+import com.app.ecommerce_management_api.dto.response.UserResponse;
 import com.app.ecommerce_management_api.model.User;
 import com.app.ecommerce_management_api.repository.UserRepository;
 import com.app.ecommerce_management_api.security.JwtTokenUtil;
 import com.app.ecommerce_management_api.service.JwtUserDetailsService;
+import com.app.ecommerce_management_api.util.ConversionUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,12 +31,15 @@ public class JwtAuthenticationController {
 
   private final JwtTokenUtil jwtTokenUtil;
 
+  private final ConversionUtil convert;
+
   private final JwtUserDetailsService userDetailsService;
   private final UserRepository userRepository;
 
-  public JwtAuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, JwtUserDetailsService userDetailsService, UserRepository userRepository) {
+  public JwtAuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, ConversionUtil convert, JwtUserDetailsService userDetailsService, UserRepository userRepository) {
     this.authenticationManager = authenticationManager;
     this.jwtTokenUtil = jwtTokenUtil;
+    this.convert = convert;
     this.userDetailsService = userDetailsService;
     this.userRepository = userRepository;
   }
@@ -76,12 +81,12 @@ public class JwtAuthenticationController {
 
   @GetMapping("/info")
   @Operation(summary = "Get user info", description = "Returns the information of the logged-in user")
-  public ResponseEntity<?> getUserInfo(HttpServletRequest request) {
+  public ResponseEntity<UserResponse> getUserInfo(HttpServletRequest request) {
     String token = request.getHeader("Authorization").substring(7);
     String username = jwtTokenUtil.getUsernameFromToken(token);
     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
     User userInfo = userRepository.findByUsername(userDetails.getUsername());
-      return ResponseEntity.ok(userInfo);
+      return ResponseEntity.ok(convert.convertToDto(userInfo, UserResponse.class));
   }
 
   private void authenticate(String username, String password) throws Exception {
