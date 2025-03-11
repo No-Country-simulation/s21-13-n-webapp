@@ -47,10 +47,12 @@ public class SecurityConfig {
     http.csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authz -> authz
                     .requestMatchers("/api/v1/authenticate", "/api/v1/register").permitAll()
+                    .requestMatchers("/actuator/**").permitAll()
                     .requestMatchers("/api/v1/**").permitAll()
                     .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                     .requestMatchers("/api/v1/user/**").hasRole("USER")
                     .requestMatchers("/test/**").permitAll()
+                    .requestMatchers("/api/info-entrega/**").permitAll()
                     .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                     .anyRequest().authenticated()
             )

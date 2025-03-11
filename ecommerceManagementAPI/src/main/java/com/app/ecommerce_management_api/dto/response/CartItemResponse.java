@@ -1,6 +1,5 @@
 package com.app.ecommerce_management_api.dto.response;
 
-
 import lombok.Getter;
 import lombok.Setter;
 

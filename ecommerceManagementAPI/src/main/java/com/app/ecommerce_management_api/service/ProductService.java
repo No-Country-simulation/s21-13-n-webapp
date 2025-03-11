@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 //comment
 public interface ProductService {
-//  List<Product> getProducts(Specification spec);
   Page<Product> getProducts(Specification<Product> spec, Pageable pageable);
   Product getProductById(Long id);
 }

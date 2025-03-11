@@ -26,11 +26,9 @@ public class User {
   private String username;
   private String password;
   private String role; // Añadir campo de rol
+  private String imageProfile;
 
   private String email;
-
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Address> addresses = new ArrayList<>();
 
   public Long getId() {
     return id;

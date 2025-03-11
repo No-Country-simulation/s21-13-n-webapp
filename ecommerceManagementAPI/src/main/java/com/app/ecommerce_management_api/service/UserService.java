@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServletRequest;
 public interface UserService {
   User getUserInfoByUsername(String username);
 
+  User getUserById(Long id);
+
   String getUsernameFromRequest(HttpServletRequest request);
 
   Long getUserIdFromRequest(HttpServletRequest request);
@@ -13,4 +15,10 @@ public interface UserService {
   String extractTokenFromRequest(HttpServletRequest request);
 
   User getUserFromToken(HttpServletRequest request);
+
+  void updateUserProfileImage(Long userId, String url);
+
+  String getUserProfileImageUrl(Long userId);
+
+  String generatePublicIdProfile(Long userId);
 }

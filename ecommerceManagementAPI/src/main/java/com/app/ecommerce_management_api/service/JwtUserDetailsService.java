@@ -1,8 +1,11 @@
 package com.app.ecommerce_management_api.service;
 
 import com.app.ecommerce_management_api.dto.UserDTO;
+import com.app.ecommerce_management_api.dto.response.UserResponse;
+import com.app.ecommerce_management_api.exception.ResourceNotFoundException;
 import com.app.ecommerce_management_api.model.User;
 import com.app.ecommerce_management_api.repository.UserRepository;
+import com.app.ecommerce_management_api.service.impl.CartServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,20 +24,51 @@ public class JwtUserDetailsService implements UserDetailsService {
   @Autowired
   private final UserRepository userRepository;
 
-  public JwtUserDetailsService(UserRepository userRepository) {
+  @Autowired
+  private final CartServiceImpl cartService;
+
+  public JwtUserDetailsService(UserRepository userRepository, CartServiceImpl cartService) {
     this.userRepository = userRepository;
+    this.cartService = cartService;
   }
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = userRepository.findByUsername(username);
-    if (user == null) {
-      throw new UsernameNotFoundException("User not found with username: " + username);
+    try {
+      User user = userRepository.findByUsername(username);
+      if (user == null) {
+        throw new UsernameNotFoundException("User not found with username: " + username);
+      }
+      Long cartId = cartService.findCartByUser_Id(user.getId());
+      return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+              getAuthority(user));
+
+    } catch (ResourceNotFoundException e) {
+        throw new ResourceNotFoundException("Error al cargar el usuario.");
     }
-    return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-            getAuthority(user));
   }
 
+
+  public UserResponse userWithCard(String username) throws UsernameNotFoundException {
+    try {
+      User user = userRepository.findByUsername(username);
+      if (user == null) {
+        throw new UsernameNotFoundException("User not found with username: " + username);
+      }
+      Long cartId = cartService.findCartByUser_Id(user.getId());
+      UserResponse userResponse = new UserResponse();
+      userResponse.setCardId(cartId);
+      userResponse.setImageProfile(user.getImageProfile());
+      userResponse.setRole(user.getRole());
+      userResponse.setUsername(user.getUsername());
+      userResponse.setEmail(user.getEmail());
+
+      return userResponse;
+
+    } catch (ResourceNotFoundException e) {
+      throw new ResourceNotFoundException("Error al cargar el usuario.");
+    }
+  }
   private Set<SimpleGrantedAuthority> getAuthority(User user) {
     return Collections.singleton(new SimpleGrantedAuthority(user.getRole()));
   }

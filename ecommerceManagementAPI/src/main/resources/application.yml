@@ -31,7 +31,32 @@ springdoc:
   packages-to-scan: com.app.ecommerce_management_api
 jwt:
   secret: EmYl05H7Tz+neq2vQebD6DWpHW9D8BwG9k79SE/gGi63YwEdLttHpZtD+7xNerXl8xfL0aRdhT0OX75L/u9agA==
----
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: "ecommerce-management-API"
+    version: "1.0.0"
+    author: "S21"
+
+cloudinary:
+  cloud-name: ${cloudinary.cloud-name}
+  api-key: ${cloudinary.api-key}
+  api-secret: ${cloudinary.api-secret}
+
+
 #spring:
 #  config:
 #    activate:
@@ -39,21 +64,21 @@ jwt:
 #  application:
 #    name: ecommerce-management-API
 #  datasource:
-#    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+#    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
 #    username: ${DB_USER}
 #    password: ${DB_PASSWORD}
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: org.postgresql.Driver
 #  jpa:
 #    hibernate:
 #      ddl-auto: update
 #    properties:
 #      hibernate:
-#        dialect: org.hibernate.dialect.MySQLDialect
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
 #    open-in-view: false
 #logging:
 #  level:
-#    root: WARN
-#    com.app.ecommerce_management_api: INFO
+#    root: INFO
+#    com.app.ecommerce_management_api: DEBUG
 #springdoc:
 #  api-docs:
 #    enabled: true
@@ -62,36 +87,3 @@ jwt:
 #    enabled: true
 #    path: /index.html
 #  packages-to-scan: com.app.ecommerce_management_api
-
-spring:
-  config:
-    activate:
-      on-profile: prod
-  application:
-    name: ecommerce-management-API
-  datasource:
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    open-in-view: false
-logging:
-  level:
-    root: INFO
-    com.app.ecommerce_management_api: DEBUG
-springdoc:
-  api-docs:
-    enabled: true
-    path: /v3/api-docs
-  swagger-ui:
-    enabled: true
-    path: /index.html
-  packages-to-scan: com.app.ecommerce_management_api
-jwt:
-  secret: EmYl05H7Tz+neq2vQebD6DWpHW9D8BwG9k79SE/gGi63YwEdLttHpZtD+7xNerXl8xfL0aRdhT0OX75L/u9agA==

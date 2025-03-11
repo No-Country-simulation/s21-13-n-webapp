@@ -1,0 +1,219 @@
+[33mcommit b75443a9d15e00acf086fe6742707753cac2e716[m[33m ([m[1;36mHEAD -> [m[1;32mdev-marzo[m[33m, [m[1;32mfeature/entrega[m[33m)[m
+Author: Claudia Ramos <cramos@fi.uba.ar>
+Date:   Tue Mar 11 18:34:45 2025 -0300
+
+    Eliminando archivos compilados y asegurando que no se suban
+
+[33mcommit 68407a513c58afa07c1f3f9573174dd814a70c09[m
+Author: Claudia Ramos <cramos@fi.uba.ar>
+Date:   Tue Mar 11 18:09:46 2025 -0300
+
+    subir cambios de infoUsuario y el formulario de entrega
+
+[33mcommit d3381366344b2fb6dc4673b2181ae68b83b883f7[m
+Author: Claudia Ramos <cramos@fi.uba.ar>
+Date:   Mon Mar 10 23:59:54 2025 -0300
+
+    Se agrego a info usuario el idCard
+
+[33mcommit 86a29aa35ed91d063176147552fbe05eabb07f91[m
+Merge: f7b1771 963e9a8
+Author: Claudia Ramos <cramos@fi.uba.ar>
+Date:   Mon Mar 10 00:05:49 2025 -0300
+
+    Merge aceptado
+
+[33mcommit 963e9a84d7b8397feb9b225d9286e8db1d96f4f3[m[33m ([m[1;31morigin/feature/cloudinary[m[33m)[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Fri Mar 7 22:24:02 2025 -0300
+
+    added userInfoResponse
+
+[33mcommit bc449d787d66ff3e6e1880202fea1d0d56c90549[m
+Merge: b0d36df f0a2549
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Tue Mar 4 17:09:00 2025 -0300
+
+    Merge remote-tracking branch 'origin/feature/cloudinary' into feature/cloudinary
+
+[33mcommit b0d36df6af17f54c44c46336f9579be763e3d868[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Tue Mar 4 17:06:08 2025 -0300
+
+    Updated request-jwt files
+
+[33mcommit f0a2549ce4a0627f64d25aff3cfde514d280ed5a[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Tue Mar 4 17:06:08 2025 -0300
+
+    Updated request-jwt files
+
+[33mcommit 52666b3905c8a8cba0db09978ca55cdeb7732456[m
+Merge: 94689c8 3bbb066
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Tue Mar 4 12:07:26 2025 -0300
+
+    Merge remote-tracking branch 'origin/dev' into dev
+
+[33mcommit 94689c868b274085abe17d311e4fa99735a888cd[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Tue Mar 4 11:46:29 2025 -0300
+
+    added serverItem to SwaggerConfig
+
+[33mcommit 60a842340196dea7f98d059a5729325fa5fd429b[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 22:09:19 2025 -0300
+
+    wip WebConfig
+
+[33mcommit 3a31e04fe97ce5dd8c18967870801d56e3749e6c[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 19:58:25 2025 -0300
+
+    deleted @ApiResponse annotation on UserController
+
+[33mcommit 56699011a4829e3ea361cf8edee7319fc4b3ceff[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 19:24:25 2025 -0300
+
+    fix: Fix Swagger documentation for user profile image upload
+    
+    - Corrected the Swagger annotations for the upload profile image endpoint
+    - Ensured proper handling of multipart/form-data requests
+    - Updated the schema to accurately reflect the file upload"
+
+[33mcommit 69d1e0da85dd98ee035ad46b5c60079fe5759ac1[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 18:41:35 2025 -0300
+
+    feat(UserController,CloudinaryService): Integrate Cloudinary for profile image management
+    
+    - Add CloudinaryService for handling image uploads and deletions
+    - Implement endpoint for uploading user profile images
+    - Ensure existing profile images are deleted before uploading new ones
+    - Update UserService to handle profile image URL updates and public ID generation
+    - Document new endpoint with Swagger annotations for better API documentation
+
+[33mcommit 73c175ea42623fa192cacf53c8581bcfcd23bf23[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 14:21:09 2025 -0300
+
+    (ProductController): Se modifica documentacion (wip)
+
+[33mcommit 49e0a77efbd8a011b026f9acbe8fb89b350fb8e0[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 12:43:47 2025 -0300
+
+    (ProductController): Se modifica documentacion
+
+[33mcommit ee8a23a0f5de3db987f28abf7524c2e700fd44cc[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sat Mar 1 22:25:37 2025 -0300
+
+    (ProductController): Se añade documentacion
+
+[33mcommit 268a079c19eac177069deaaa8be46cbcf51f7ea1[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sat Mar 1 22:02:08 2025 -0300
+
+    (CartController): Se añade documentacion
+
+[33mcommit 7832d62124e7a0099a73dae7014caf7c1219f028[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sat Mar 1 21:49:04 2025 -0300
+
+    feat(CartItemController): Añadir documentación Swagger 3 para CartItemController
+    
+    - Documentar el endpoint para crear un ítem del carrito.
+    - Documentar el endpoint para obtener un ítem del carrito por ID.
+    - Documentar el endpoint para actualizar un ítem del carrito.
+    - Documentar el endpoint para eliminar un ítem del carrito por ID.
+    - Documentar el endpoint para obtener todos los ítems de un carrito por ID del carrito.
+
+[33mcommit 18c19de3f20db2ac117452ec3df41031be1aa53c[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sat Mar 1 19:10:34 2025 -0300
+
+    merge dev to main
+
+[33mcommit 5ff398abbf9e5f98f3b7b4f74841350e120c68ec[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sat Mar 1 17:05:59 2025 -0300
+
+    feat(Exception): Add global exception handling and DTO mapping improvements
+    
+    - Implemented global exception handling using @ControllerAdvice and @ExceptionHandler.
+    - Created custom exceptions: ResourceNotFoundException, BadRequestException, UnauthorizedException, ForbiddenException, ConflictException, ServiceUnavailableException.
+    - Added GlobalExceptionHandler to handle custom exceptions and provide consistent error responses.
+    - Defined ErrorResponse class to structure error responses.
+    - Updated CartItemService to throw ResourceNotFoundException when cartId is not found.
+
+[33mcommit 3bbb06612c0615410834ea225c89d3e91871ea8e[m
+Merge: 7a60512 26f5e16
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Tue Mar 4 11:47:13 2025 -0300
+
+    Merge pull request #20 from No-Country-simulation/feature/cloudinary
+    
+    added serverItem to SwaggerConfig
+
+[33mcommit 26f5e161402ceae88b2e153ea8964e984edb18b0[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Tue Mar 4 11:46:29 2025 -0300
+
+    added serverItem to SwaggerConfig
+
+[33mcommit f7b17716817a29a587b7e5cb372dc18dc18f399e[m[33m ([m[1;31morigin/dev-marzo[m[33m)[m
+Author: Claudia Ramos <cramos@fi.uba.ar>
+Date:   Mon Mar 3 14:39:27 2025 -0300
+
+    Se modificaron las clases para guardar el email al registrarse el usuario
+
+[33mcommit 7a60512c965ee8786061efd08ce3234d40905730[m
+Merge: e3bed7e b10658f
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 22:11:13 2025 -0300
+
+    Merge pull request #19 from No-Country-simulation/feature/cloudinary
+    
+    Feature/cloudinary
+
+[33mcommit b10658f11f44f48cc214a18e9a8e72c4cc10f022[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 22:09:19 2025 -0300
+
+    wip WebConfig
+
+[33mcommit 2efa95757af62316773533bbe8ecf3806c71a3af[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 19:58:25 2025 -0300
+
+    deleted @ApiResponse annotation on UserController
+
+[33mcommit f37c9dd409fea657685408260485d0316e147e6b[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 19:25:40 2025 -0300
+
+    deleted .iml
+
+[33mcommit af883e628c298450fe8b2e196bbd32016d13ec8c[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 19:24:25 2025 -0300
+
+    fix: Fix Swagger documentation for user profile image upload
+    
+    - Corrected the Swagger annotations for the upload profile image endpoint
+    - Ensured proper handling of multipart/form-data requests
+    - Updated the schema to accurately reflect the file upload"
+
+[33mcommit c72bfffe40559f627c2d0356bbb4b507aa775a7c[m
+Author: arielrz-dev <ruizarmando.dev@gmail.com>
+Date:   Sun Mar 2 18:41:35 2025 -0300
+
+    feat(UserController,CloudinaryService): Integrate Cloudinary for profile image management
+    
+    - Add CloudinaryService for handling image uploads and deletions
+    - Implement endpoint for uploading user profile images
+    - Ensure existing profile images are deleted before uploading new ones
+    - Update UserService to handle profile image U

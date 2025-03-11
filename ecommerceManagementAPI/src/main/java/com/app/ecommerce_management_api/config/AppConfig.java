@@ -8,6 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.math.BigDecimal;
+
 //comment
 @Configuration
 public class AppConfig {
@@ -23,11 +26,13 @@ public class AppConfig {
     modelMapper.addMappings(new PropertyMap<CartItem, CartItemResponse>() {
       @Override
       protected void configure() {
-        //when(notNull).map(source.getProduct().getId(), destination.getProductId());
-        //when(notNull).map(source.getProduct().getName(), destination.getProductName());
-        //when(notNull).map(source.getProduct().getDescription(), destination.getProductDescription());
-        //when(notNull).map(source.getProduct().getPrice(), destination.getProductPrice());
-//        when(notNull).map(source.getPrice().multiply(BigDecimal.valueOf(source.getAmount())), destination.getTotalPrice());
+
+        when(notNull).map(source.getProduct().getId(), destination.getProductId());
+        when(notNull).map(source.getProduct().getName(), destination.getProductName());
+        when(notNull).map(source.getProduct().getDescription(), destination.getProductDescription());
+        when(notNull).map(source.getProduct().getPrice(), destination.getProductPrice());
+      //  when(notNull).map(source.getPrice().multiply(BigDecimal.valueOf(source.getAmount())), destination.getTotalPrice());
+
         // Mapear otros campos necesarios
       }
     });

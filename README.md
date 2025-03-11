@@ -1,136 +1,134 @@
-# Proyecto: [ecommerce-management-API]
+<div align="center">
+<img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/Portada Fresko.png" alt="equipoportada" />
+</div>
 
-Este documento proporciona instrucciones paso a paso para configurar y ejecutar el proyecto [ecommerce-management-API] en tu entorno local utilizando Docker Compose.
+<h1 align="center">¡Hola! Sean bienvenidos al perfil del equipo s21-13-n-webapp </h1>
 
-## Prerrequisitos
+Somos un equipo **multidisciplinario de desarrolladores, diseñadores y QA’s** comprometidos con la creación de una plataforma de e-commerce innovadora e intuitiva para la **Heladería Fresko**. Nuestra misión es ofrecer a los usuarios una experiencia de compra fluida y atractiva, permitiéndoles explorar, personalizar y adquirir sus productos de manera sencilla y eficiente.
 
-Antes de comenzar, asegúrate de tener instalado lo siguiente:
+## ✨ Nuestro Proyecto
 
-* **Docker Desktop**: [https://www.docker.com/get-started/]
-* **JDK (Java Development Kit)**: Versión [17].
-* **IDE (Entorno de Desarrollo Integrado)**: Recomendamos [IntelliJ IDEA] (IntelliJ IDEA, Eclipse, etc.)
+# FRESKO 🍦
 
-## Configuración del Entorno
+<div align="center">
+<img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/HomeFresko.png" alt="portada" />
+</div>
 
-1. **Clonar el Repositorio:** 
-    ```bash
-    git clone https://github.com/No-Country-simulation/s21-13-n-webapp
-    cd [ecommerceManagementAPI]
+> **"Dulzura en Cada Bocado, Frescura en Cada Instante."**
 
-    ```
-2. **Editar el archivo .env:**
-    Renombrar el archivo example.env a .env: 
-    ```bash
-    DB_NAME=<database_name>
-    DB_USER=<user>
-    DB_PASSWORD=<password>
-    ```
-___
+## 📌 Descripción General
 
-3. #### ***IMPORTANTE***: *Habilitar el soporte para archivos .env en el IDE*
-___ 
+FRESKO es una aplicación web de e-commerce diseñada para la Heladería **Fresko**, permitiendo a los usuarios explorar el menú de productos, visualizar detalles y precios, realizar reservas o compras con opción de recogida en tienda o delivery.
 
-1. **Construir las imagenes de Docker:**
-    En la raiz del proyecto donde se ubica el archivo de docker-compose.yml ejecutar: 
-    ```bash
-    docker-compose up -d
-    ```
+## ✨ Características Clave
 
-2. **Salida**
-    Al ejecutar docker-compose up, Docker descarga la imagen de PostgreSQL, crea y configura un contenedor con la base de datos, y asegura la persistencia y accesibilidad de los datos
-    ``` [+] Running 15/1
-        ✔ login-register-database Pulled                                                                                                                                                                                  14.4s 
-        [+] Running 3/3
-        ✔ Network ecommercemanagementapi_backend                      Created                                                                                                                                              0.1s 
-        ✔ Volume "ecommercemanagementapi_db_data"                     Created                                                                                                                                              0.0s 
-        ✔ Container ecommercemanagementapi-login-register-database-1  Started       
-    ```
-3. **Correr el siguiente comando de maven y correr el proyecto**
-    ```bash
-    mvn clean
-    ```
-***
+- 📜 **Exploración del Menú:** Visualización en línea de todos los productos de la heladería.
+- 🛒 **Reserva de Productos:** Posibilidad de reservar productos y recogerlos en tienda.
+- 🚚 **Opciones de Compra:** Pago al recoger o entrega a domicilio.
+- 🎨 **Personalización de Helado:** Elección y mezcla de sabores a gusto del usuario.
 
-## Configuración con variables de entorno para producción/desarrollo
+## 🎨 Diseño UI
 
-### 1. Verificar las variables de entorno en el archivo `.env`
+<div align="center">
+<img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/uifresko.png" alt="DiseñoUI" />
+</div>
 
-```bash
-DB_TYPE=<postgresql>
-DB_NAME=<loginregister>
-DB_USER=<pepouser>
-MYSQL_ROOT_PASSWORD=<peporoot>
-DB_PASSWORD=<pepopass123>
-DB_HOST=<localhost>
-DB_PORT=<3306>
-SPRING_PROFILES_ACTIVE=<prod>
-```
+## 🛠️ Tecnologías Utilizadas
 
-### 2. Ejecutar el siguiente comando en la ruta principal del proyecto
+### **Design UX/UI:**
 
-```bash
-docker-compose -f docker-compose.development.yml --env-file .env.development up
-```
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)  
+![Moqups](https://img.shields.io/badge/Moqups-2F8CBB?style=for-the-badge&logo=moqups&logoColor=white)
 
-Al ejecutar este comando, Docker descarga la imagen de PostgreSQL, crea y configura un contenedor con la base de datos, y asegura la persistencia y accesibilidad de los datos. Verás algo como esto en la terminal:
+### **Frontend:**
 
-```
-docker-compose -f docker-compose.development.yml --env-file .env.development up
-[+] Running 3/3
- ✔ Network ecommercemanagementapi_backend-development          Created                                                                                                                                                                                           0.0s 
- ✔ Volume "ecommercemanagementapi_db_data_dev"                 Created                                                                                                                                                                                           0.0s 
- ✔ Container ecommercemanagementapi-login-register-database-1  Created                                                                                                                                                                                           0.1s 
-Attaching to login-register-database-1
-```
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![DaisyUI](https://img.shields.io/badge/DaisyUI-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)
 
-#### 2.1 Remover el contenedor y la red creados
+### **Backend:**
 
-```bash
-docker-compose -f docker-compose.development.yml --env-file .env.development down
-```
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
 
-#### 2.2 Borrar los volúmenes que contienen los datos
+### **Herramientas:**
 
-Primero, listamos los volúmenes:
+![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)  
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)  
+![Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)  
+![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)
 
-```bash
-docker volume ls
+### **Enlaces de Acceso al MVP:**
 
-DRIVER    VOLUME NAME
-local     ecommercemanagementapi_db_data_dev
-```
+[![FIGMA](https://img.shields.io/badge/figma-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/MqCs0Jc9ryOe1KTtI7AnIR/E-commerce-de-Helader%C3%ADa?node-id=0-1&t=Ou1CPCHWtmK3y9q1-1)
+[![Sitio web](https://img.shields.io/website?url=https%3A%2F%2Ffipe.cl&style=for-the-badge)](https://heladeria-deploy.vercel.app/)
 
-Luego, tomamos el nombre del volumen y lo eliminamos con el siguiente comando:
+### **Reunión del equipo**
 
-```bash
-docker volume rm -f ecommercemanagementapi_db_data
-```
+<div align="center">
+<img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/reunion.jpg" alt="Captura" />
+</div>
 
----
+## 🤝 Nuestro Equipo
 
-## Configuración de comandos para levantar el proyecto
+<table align="center">
+  
+  <tr>
+    <td align="center">Hernán Casasola <img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/ar.png" width="16" /></td>
+    <td align="center">Luis Quispe <img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/pe.png" width="16" /></td>
+    <td align="center">Carlos Franco <img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/col.png" width="16" /></td>
+    <td align="center">Claudia Ramos <img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/ar.png" width="16" /></td>
+  </tr>
+  <tr>
+    <td align="center">Dev Frontend</td>
+    <td align="center">Dev Frontend & Design UX/UI</td>
+    <td align="center">Dev Frontend</td>
+    <td align="center">Dev Backend</td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/hernan-casasola/">
+    	<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/luis-angel-quispe/">
+    	<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/dev-carlos-franco/">
+    	<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/claudialisramos/">
+    	<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a></td>
+  </tr>
 
-### 3. Exponer el perfil a utilizar
+</table>
 
-#### A) Para desarrollo
-
-```bash
-$env:SPRING_PROFILES_ACTIVE="dev"
-```
-
-#### B) Para producción
-
-```bash
-$env:SPRING_PROFILES_ACTIVE="prod"
-```
-
-### 3.1 Ejecutar el siguiente comando
-
-```bash
-./mvnw spring-boot:run
-```
-### 4 Ejecutar el siguiente comando
-
-```bash
-.\run-app.ps1 -profile "dev"
-```
+<table align="center">
+  <tr>
+    <td align="center">Armando Ruiz <img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/ar.png" width="16" /></td>
+    <td align="center">Alejandro Reyes <img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/mex.png" width="16" /></td>
+    <td align="center">Mónica Godino <img src="https://github.com/No-Country-simulation/s21-13-n-webapp/blob/main/img/ar.png" width="16" /></td>
+  </tr>
+  <tr>
+    <td align="center">Dev Backend</td>
+    <td align="center">Quality Assurance & Design UX/UI</td>
+    <td align="center">Quality Assurance</td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/ariel-rz/">
+    	<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/alejandro-reyes-software-qa-engineer/">
+    	<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a></td>
+        <td align="center"><a href="https://www.linkedin.com/in/m%C3%B3nica-godino-2ab231158/">
+    	<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a></td>
+  </tr>
+  
+</table>

@@ -1,7 +1,7 @@
 package com.app.ecommerce_management_api.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+//comment
 @Schema(description = "Response containing JWT token and refresh token")
 public class JwtResponse {
   @Schema(description = "JWT token")

@@ -29,9 +29,4 @@ public class ProductServiceImpl implements ProductService {
     return productRepository.findAll(spec, pageable);  // Usamos el Pageable para paginar
   }
 
-//  @Override
-//  public List<Product> getProducts(Specification spec) {
-//    return productRepository.findAll(spec);
-//  }
-
 }

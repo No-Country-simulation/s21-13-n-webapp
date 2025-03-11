@@ -4,6 +4,8 @@ import com.app.ecommerce_management_api.model.Cart;
 import com.app.ecommerce_management_api.model.User;
 import com.app.ecommerce_management_api.service.CartService;
 import com.app.ecommerce_management_api.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/v1/cart")
+@Tag(name = "Cart", description = "Endpoints for cart user management")
 public class CartController {
 
   private final UserService userService;
@@ -25,7 +28,7 @@ public class CartController {
     this.cartService = cartService;
   }
 
-
+  @Operation(summary = "Create cart", description = "Crea un nuevo carrito de compras para el usuario autenticado.")
   @PostMapping("/create")
   public ResponseEntity<?> createCart(HttpServletRequest request) throws Exception {
     try {
@@ -42,6 +45,7 @@ public class CartController {
     }
   }
 
+  @Operation(summary = "Update cart price", description = "Actualiza el precio total del carrito especificado.")
   @PutMapping("/updatePrice")
   public ResponseEntity<?> updatePrice(@RequestParam Long cartId, @RequestParam BigDecimal newPrice) {
     try {

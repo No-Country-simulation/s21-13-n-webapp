@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
+import java.util.Optional;
+
 //comment
 @Service
 public class CartServiceImpl implements CartService {
@@ -36,4 +38,11 @@ public class CartServiceImpl implements CartService {
     cart.setTotalAmount(newPrice);
     cartRepository.save(cart);
   }
+
+  @Override
+  public Long findCartByUser_Id(Long userId) {
+    return cartRepository.findCartIdByUserId(userId);
+  }
+
+
 }

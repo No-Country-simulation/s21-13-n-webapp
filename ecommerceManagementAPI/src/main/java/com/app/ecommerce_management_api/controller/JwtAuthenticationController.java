@@ -4,10 +4,15 @@ import com.app.ecommerce_management_api.dto.JwtRefreshRequest;
 import com.app.ecommerce_management_api.dto.JwtRequest;
 import com.app.ecommerce_management_api.dto.JwtResponse;
 import com.app.ecommerce_management_api.dto.UserDTO;
+import com.app.ecommerce_management_api.dto.response.UserResponse;
+import com.app.ecommerce_management_api.model.Cart;
 import com.app.ecommerce_management_api.model.User;
 import com.app.ecommerce_management_api.repository.UserRepository;
 import com.app.ecommerce_management_api.security.JwtTokenUtil;
+import com.app.ecommerce_management_api.service.CartService;
 import com.app.ecommerce_management_api.service.JwtUserDetailsService;
+import com.app.ecommerce_management_api.service.impl.CartServiceImpl;
+import com.app.ecommerce_management_api.util.ConversionUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,25 +25,31 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RequestMapping("/api/v1")
 @RestController
-@Tag(name = "JWT Authentication Controller", description = "Endpoints for JWT authentication and user management")
+@Tag(name = "JWT Authentication", description = "Endpoints for JWT authentication and user management")
 public class JwtAuthenticationController {
 
   private final AuthenticationManager authenticationManager;
 
   private final JwtTokenUtil jwtTokenUtil;
 
+  private final ConversionUtil convert;
+
   private final JwtUserDetailsService userDetailsService;
   private final UserRepository userRepository;
+  private final CartServiceImpl cartService;
 
-  public JwtAuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, JwtUserDetailsService userDetailsService, UserRepository userRepository) {
+  public JwtAuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, ConversionUtil convert, JwtUserDetailsService userDetailsService, UserRepository userRepository, CartServiceImpl cartService) {
     this.authenticationManager = authenticationManager;
     this.jwtTokenUtil = jwtTokenUtil;
+    this.convert = convert;
     this.userDetailsService = userDetailsService;
     this.userRepository = userRepository;
+    this.cartService = cartService;
   }
-
 
   @PostMapping("/authenticate")
   @Operation(summary = "Authenticate user", description = "Authenticates a user and returns a JWT token and refresh token")
@@ -66,22 +77,27 @@ public class JwtAuthenticationController {
   @PostMapping("/register")
   @Operation(summary = "Register new user", description = "Registers a new user in the system")
   public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
+    System.out.println(user.getEmail());
     try {
       User savedUser = userDetailsService.save(user);
+      System.out.println(savedUser.getEmail());
+      Cart cart = new Cart();
+      cart.setUser(savedUser);
+      cart.setTotalAmount(new BigDecimal("0.0"));
+      cartService.save(cart);
       return ResponseEntity.ok(savedUser);
     } catch (RuntimeException e) {
       return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
   }
 
-  @GetMapping("/info")
+  @GetMapping("/details")
   @Operation(summary = "Get user info", description = "Returns the information of the logged-in user")
-  public ResponseEntity<?> getUserInfo(HttpServletRequest request) {
+  public ResponseEntity<UserResponse> getUserInfo(HttpServletRequest request) {
     String token = request.getHeader("Authorization").substring(7);
     String username = jwtTokenUtil.getUsernameFromToken(token);
-    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-    User userInfo = userRepository.findByUsername(userDetails.getUsername());
-      return ResponseEntity.ok(userInfo);
+    UserResponse userResponse = userDetailsService.userWithCard(username);
+      return ResponseEntity.ok(userResponse);
   }
 
   private void authenticate(String username, String password) throws Exception {

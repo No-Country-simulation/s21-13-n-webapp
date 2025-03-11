@@ -1,14 +1,26 @@
-import CarouselPrueba from "@/components/CarouselPrueba";
+// import CarouselPrueba from "@/components/CarouselPrueba";
+import IceCreamCard from "@/components/UI/IceCreamCard";
+import Carousel from "@/components/UI/Carousel";
+import Subscribe from "@/components/UI/Subscribe";
+import DividerCard from "@/components/UI/DividerCard";
+
 
 export default function Home() {
 
   return (
-    <div className="hero bg-base-200 min-h-screen items-start">
-      <div className="hero-content text-center">
-        <p>HOME</p>
-        <CarouselPrueba />
-        
+    <>
+      <IceCreamCard />
+      <div className="flex justify-center items-center lg:mt-16 lg:mx-28">
+        <Carousel />
       </div>
-    </div>
+
+      <div className="lg:mx-28 lg:mt-16">
+        <DividerCard />
+      </div>
+      
+      <Subscribe />
+      
+    </>
   );
+
 }

@@ -4,6 +4,8 @@ import com.app.ecommerce_management_api.model.Cart;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Optional;
+
 //comment
 public interface CartService {
   void save(Cart cart);
@@ -12,4 +14,6 @@ public interface CartService {
 
   @Transactional
   void updatePrice(Long cartId, BigDecimal newPrice);
+
+  Long findCartByUser_Id(Long userId);
 }

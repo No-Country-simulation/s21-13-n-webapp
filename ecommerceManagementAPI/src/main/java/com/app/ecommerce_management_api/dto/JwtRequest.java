@@ -1,7 +1,7 @@
 package com.app.ecommerce_management_api.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
+//comment
 @Schema(description = "Request for JWT authentication")
 public class JwtRequest {
   @Schema(description = "Username of the user", example = "john_doe")
