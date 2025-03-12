@@ -12,4 +12,6 @@ public interface CartService {
 
   @Transactional
   void updatePrice(Long cartId, BigDecimal newPrice);
+
+  Long findCartByUser_Id(Long userId);
 }

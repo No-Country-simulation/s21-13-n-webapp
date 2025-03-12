@@ -5,10 +5,12 @@ import com.app.ecommerce_management_api.dto.JwtRequest;
 import com.app.ecommerce_management_api.dto.JwtResponse;
 import com.app.ecommerce_management_api.dto.UserDTO;
 import com.app.ecommerce_management_api.dto.response.UserResponse;
+import com.app.ecommerce_management_api.model.Cart;
 import com.app.ecommerce_management_api.model.User;
 import com.app.ecommerce_management_api.repository.UserRepository;
 import com.app.ecommerce_management_api.security.JwtTokenUtil;
 import com.app.ecommerce_management_api.service.JwtUserDetailsService;
+import com.app.ecommerce_management_api.service.impl.CartServiceImpl;
 import com.app.ecommerce_management_api.util.ConversionUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,6 +23,8 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RequestMapping("/api/v1")
 @RestController
@@ -35,13 +39,15 @@ public class JwtAuthenticationController {
 
   private final JwtUserDetailsService userDetailsService;
   private final UserRepository userRepository;
+  private final CartServiceImpl cartService;
 
-  public JwtAuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, ConversionUtil convert, JwtUserDetailsService userDetailsService, UserRepository userRepository) {
+  public JwtAuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, ConversionUtil convert, JwtUserDetailsService userDetailsService, UserRepository userRepository, CartServiceImpl cartService) {
     this.authenticationManager = authenticationManager;
     this.jwtTokenUtil = jwtTokenUtil;
     this.convert = convert;
     this.userDetailsService = userDetailsService;
     this.userRepository = userRepository;
+      this.cartService = cartService;
   }
 
 
@@ -73,6 +79,11 @@ public class JwtAuthenticationController {
   public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
     try {
       User savedUser = userDetailsService.save(user);
+      System.out.println(savedUser.getEmail());
+      Cart cart = new Cart();
+      cart.setUser(savedUser);
+      cart.setTotalAmount(new BigDecimal("0.0"));
+      cartService.save(cart);
       return ResponseEntity.ok(savedUser);
     } catch (RuntimeException e) {
       return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
