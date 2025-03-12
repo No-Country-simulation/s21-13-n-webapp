@@ -36,4 +36,9 @@ public class CartServiceImpl implements CartService {
     cart.setTotalAmount(newPrice);
     cartRepository.save(cart);
   }
+
+  @Override
+  public Long findCartByUser_Id(Long userId) {
+    return cartRepository.findCartIdByUserId(userId);
+  }
 }
