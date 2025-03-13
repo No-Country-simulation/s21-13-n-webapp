@@ -6,6 +6,7 @@ import AnimatedWrapper from "./AnimatedWrapper";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Footer from "@/components/UI/Footer";
+import Chatbot from "@/components/Chatbot";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default function RootLayout({
         <AnimatedWrapper>{children}</AnimatedWrapper>
         <Footer/>
         <ToastContainer />
+        <Chatbot />
 
       </body>
     </html>
