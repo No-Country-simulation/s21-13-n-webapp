@@ -1,20 +1,18 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-// import Cookies from "js-cookie";
 
 const useProductStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       products: [],
       isLoading: false,
       error: null,
 
       fetchProducts: async () => {
         set({ isLoading: true, error: null });
-        
+
         try {
-          // Aquí realizarías la llamada a la API para obtener los productos
-          const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products`);
+          const response = await fetch("https://ecommercemanagementapi-production.up.railway.app/api/v1/products");
           if (!response.ok) throw new Error("Error fetching products");
 
           const data = await response.json();
@@ -26,29 +24,12 @@ const useProductStore = create(
         }
       },
 
-      findProduct: (searchTerm) => {
-        const { products } = get();
-        if (!products.length) return [];
-
-        const lowerSearchTerm = searchTerm.toLowerCase();
-        return products.filter((product) => {
-          return product.name.toLowerCase().includes(lowerSearchTerm);
-        });
-      },
-
-      compareProducts: (newProduct) => {
-        const { products } = get();
-        const existingProduct = products.find(
-          (product) => product.name.toLowerCase() === newProduct.name.toLowerCase()
-        );
-        return existingProduct;
-      },
-
     }),
     {
-      name: "product-storage", // Esta es la clave en el localStorage para persistir el estado
+      name: "product-storage",
     }
   )
 );
 
 export default useProductStore;
+
